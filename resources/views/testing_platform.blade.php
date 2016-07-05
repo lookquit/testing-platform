@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
         <div class="panel panel-default clearfix ">
             <div class="panel-heading style-tx">Testing</div>
             <div class="form-cl">
@@ -16,7 +16,7 @@
                     <label for="exampleInputName2">Test Case Name:</label>
                     <input type="text" class="form-control" id="exampleInputName2" placeholder="Name">
                 </div>
-                <form method="POST" >
+                <form method="POST" class="form-horizontal" role="form">
                     <table class="table head-table text-center" >
                         <tr>
                             <td>Test Steps</td>
@@ -29,13 +29,13 @@
                           <tr>
                               <td>1</td>
                               <td>
-                                  <input type="text" name="tc[]" value="" placeholder="Command">
+                                  <input type="text" name="tc[]" value="" placeholder="Command" class="form-control">
                               </td>
                               <td>
-                                  <input type="text" name="tc[]" value="" placeholder="Target">
+                                  <input type="text" name="tc[]" value="" placeholder="Target" class="form-control">
                               </td>
                               <td>
-                                  <input type="text" name="tc[]" value="" placeholder="Value">
+                                  <input type="text" name="tc[]" value="" placeholder="Value" class="form-control">
                               </td>
                               <td>
                                   <button class="btn btn-default" type="button" onClick="addInput('form-dynamic');">+</button>
@@ -51,7 +51,7 @@
 
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading style-tx">History</div>
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -109,9 +109,9 @@
         var newdiv = document.createElement('tr');
         newdiv.innerHTML =
             '<td>' + (count + 1) + '</td>' +
-            '<td><input type="text" name="name" value="" placeholder="Command"></td>' +
-            '<td><input type="text" name="name" value="" placeholder="Target"></td>' +
-            '<td><input type="text" name="name" value="" placeholder="Value"></td>' +
+            '<td><input type="text" name="name" value="" placeholder="Command" class="form-control"></td>' +
+            '<td><input type="text" name="name" value="" placeholder="Target" class="form-control"></td>' +
+            '<td><input type="text" name="name" value="" placeholder="Value" class="form-control"></td>' +
             '<td><button class="btn btn-default" type="button" onClick="addInput(\'form-dynamic\');">+</button></td>';
         document.getElementById(form).appendChild(newdiv);
         count++;
