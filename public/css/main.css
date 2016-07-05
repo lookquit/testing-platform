@@ -1,40 +1,35 @@
-body{
-
-  margin:0;
-  font-weight: bold !important;
+body {
+    margin: 0;
+    font-weight: bold !important;
 }
 .navbar-default {
-  height: 75px;
-  text-align: center;
-  font-family: 'Lato';
+    height: 75px;
+    text-align: center;
+    font-family: 'Lato';
 }
-
 .head-tx {
-  font-weight: bold;
-  text-align: center;
-  margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
 }
-
 .head-table {
-  margin: 40px 0;
+    margin: 40px 0;
 }
-
 .content {
-  margin-top: 50px;
+    margin-top: 50px;
 }
-
 .style-tx {
-
-  font-size: 20px;
+    font-size: 20px;
 }
-
 .form-cl {
-  padding: 25px
+    padding: 25px
 }
-
 td {
-  white-space: nowrap;
+    white-space: nowrap;
 }
-
+.bth-style {
+    margin-bottom: 23px !important;
+    padding: 10px 71px !important;
+}
 
 /*# sourceMappingURL=main.css.map */

@@ -46,7 +46,7 @@
                     </table>
                     {{ csrf_field() }}
                 </form>
-                <button class="btn btn-lg btn-success pull-right" type="submit">Run</button>
+                <button class="btn btn-lg btn-success pull-right bth-style" type="submit">Run</button>
             </div>
 
         </div>
