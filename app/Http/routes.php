@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WebBrowserTesting@index');
+
+Route::get('/testing', 'WebBrowserTesting@callSelenium');
+
+// Route::get('/', 'PageController@home');

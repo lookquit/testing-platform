@@ -1,0 +1,37 @@
+body{
+
+  margin:0;
+  font-weight: bold !important;
+}
+.navbar-default {
+  height: 75px;
+  text-align: center;
+  font-family: 'Lato';
+}
+
+.head-tx {
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.head-table {
+  margin: 40px 0;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+.style-tx {
+
+  font-size: 20px;
+}
+
+.form-cl {
+  padding: 25px
+}
+
+
+
+/*# sourceMappingURL=main.css.map */
