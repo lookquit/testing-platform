@@ -13,6 +13,6 @@
 
 Route::get('/', 'WebBrowserTesting@index');
 
-Route::get('/testing', 'WebBrowserTesting@callSelenium');
+Route::post('/testing', 'WebBrowserTesting@callSelenium')->name('test');
 
 // Route::get('/', 'PageController@home');

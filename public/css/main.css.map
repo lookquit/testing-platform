@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAAA,KACE,QAAU,CAEX","file":"main.css","sourcesContent":["body {\r\n  margin: 0;\r\n\r\n}\r\n"],"sourceRoot":"/source/"}
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAAA,KACE,QAAU,CACX,eAGC,WACD,CAAC","file":"main.css","sourcesContent":["body {\r\n  margin: 0;\r\n}\r\n\r\nnavbar-default {\r\n  height: 40px\r\n}\r\n"],"sourceRoot":"/source/"}

@@ -19,10 +19,12 @@ class WebBrowserTesting extends Controller
 
     public function callSelenium()
     {
-      $host = 'http://localhost:4444/wd/hub'; // this is the default
-      $capabilities = DesiredCapabilities::firefox();
-      $driver = RemoteWebDriver::create($host, $capabilities);
-      $driver->get('https://github.com/facebook/php-webdriver');
-      $driver->quit();
+      echo '<pre>';
+      var_dump($_POST);
+      // $host = 'http://localhost:4444/wd/hub'; // this is the default
+      // $capabilities = DesiredCapabilities::firefox();
+      // $driver = RemoteWebDriver::create($host, $capabilities);
+      // $driver->get('https://github.com/facebook/php-webdriver');
+      // $driver->quit();
     }
 }
