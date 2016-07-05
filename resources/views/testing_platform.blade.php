@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="panel panel-default clearfix ">
             <div class="panel-heading style-tx">Testing</div>
             <div class="form-cl">
@@ -17,7 +17,7 @@
                     <input type="text" class="form-control" id="exampleInputName2" placeholder="Name">
                 </div>
                 <form method="POST" >
-                    <table class="table head-table" >
+                    <table class="table head-table text-center" >
                         <tr>
                             <td>Test Steps</td>
                             <td>Command</td>
@@ -51,7 +51,7 @@
 
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading style-tx">History</div>
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
