@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WebBrowserTesting@index');
+Route::get('/', 'WebBrowserTesting@index')->name('index');
 
 Route::post('/testing', 'WebBrowserTesting@callSelenium')->name('test');
 

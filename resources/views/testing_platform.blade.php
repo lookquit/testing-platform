@@ -28,9 +28,20 @@
                             <tr>
                                 <td>1</td>
                                 <td>
-                                    <input type="text" name="command[]" value="" placeholder="Command" class="form-control">
+                                  <select name="command[]" class="form-control">
+                                    <option value="click">Click</option>
+                                    <option value="sendKeys">SendKeys</option>
+                                    <option value="clear">ClearKeys</option>
+
+                                  </select>
                                 </td>
                                 <td>
+                                    <select name="type[]" class="form-control">
+                                      <option value="id">Id</option>
+                                      <option value="class">Class</option>
+                                      <option value="name">Name</option>
+                                      <option value="linktext">LinkText</option>
+                                    </select>
                                     <input type="text" name="target[]" value="" placeholder="Target" class="form-control">
                                 </td>
                                 <td>
@@ -43,8 +54,9 @@
                         </tbody>
 
                     </table>
+
+                    <button class="btn btn-lg btn-success pull-right bth-style" id="submit" type="submit" name="count" value="1">Run</button>
                     {{ csrf_field() }}
-                    <button class="btn btn-lg btn-success pull-right bth-style" type="submit">Run</button>
             </form>
 
             </div>
@@ -115,10 +127,16 @@
         var newdiv = document.createElement('tr');
         newdiv.innerHTML =
             '<td>' + (count + 1) + '</td>' +
-            '<td><input type="text" name="command[]" value="" placeholder="Command" class="form-control"></td>' +
-            '<td><input type="text" name="target[]" value="" placeholder="Target" class="form-control"></td>' +
+            '<td>'+'<select name="command[]" class="form-control">'+
+            '<option value="click">Click</option>'+
+            '<option value="sendKeys">SendKeys</option>'+
+            '<option value="clear">ClearKeys</option>'+
+            '</select></td>' +
+            '<td><select name="type[]" class="form-control"><option value="id">Id</option><option value="class">Class</option><option value="name">Name</option><option value="linktext">LinkText</option></select>'+
+            '<input type="text" name="target[]" value="" placeholder="Target" class="form-control"></td>' +
             '<td><input type="text" name="value[]" value="" placeholder="Value" class="form-control"></td>' +
             '<td><button class="btn btn-default" id="show" type="button" onClick="addInput(\'form-dynamic\');">+</button></td>';
+        document.getElementById("submit").value = count+1;
         document.getElementById(form).appendChild(newdiv);
         count++;
     }
