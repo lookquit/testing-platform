@@ -36,79 +36,58 @@ class WebBrowserTesting extends Controller
 
       $chkElement = false;
 
-      // //check url exist
-      if($this->chkUrl($url)) {
-        $capabilities = DesiredCapabilities::firefox();
-        $driver = RemoteWebDriver::create($this->host, $capabilities, 500);
-        $driver->get($url);
-        $iteration = 0;
+      // //check url exist !!!!!!!!!!!
+      $capabilities = DesiredCapabilities::firefox();
+      $driver = RemoteWebDriver::create($this->host, $capabilities, 500);
+      $driver->get('https://facebook.github.io/react/docs/getting-started.html');
 
-        while($count) {
-          // echo '<br>';
-          // var_dump($driver);
-          // echo '<br>';
+      for ($i=0; $i < 5; $i++) {
 
-          switch ($type[$iteration]) {
-
-            case 'id':
-                if($driver->findElement(WebDriverBy::id($target[$iteration]))) {
-                  $chkElement = true;
-                }
-            break;
-
-            case 'class':
-                if($driver->findElement(WebDriverBy::id($target[$iteration]))) {
-                  $chkElement = true;
-                }
-            break;
-
-            case 'name':
-                if($driver->findElement(WebDriverBy::id($target[$iteration]))) {
-                  $chkElement = true;
-                }
-            break;
-
-            case 'linktext':
-                if($driver->findElement(WebDriverBy::linkText($target[$iteration]))) {
-                  $chkElement = true;
-                }
-            break;
-
-          }
-
-
-
-          if($chkElement == true) {
-            echo 'test';
-            switch ($command[$iteration]) {
-              case 'click':
-                $driver = $driver->findElement(WebDriverBy::linkText($target[$iteration]))->click();
-              break;
-
-              case 'sendKeys':
-                $driver = $driver->findElement(WebDriverBy::id($target[$iteration]))->sendKeys($value[$iteration])->submit();
-              break;
-
-              case 'clear':
-                $driver = $driver->findElement(WebDriverBy::id($target[$iteration]))->clear();
-              break;
-            }
-
-          }
-
-          $count--;
-          $iteration++;
-
-        }
-      //  $driver->quit();
+        $driver->findElement(WebDriverBy::linkText('Interactivity and Dynamic UIs'))->click();
+        $driver->findElement(WebDriverBy::linkText('Multiple Components'))->click();
       }
+
+
+
+      // 22222222222222
+      // $link = array(
+      //                 'commad' => array('click', 'link', 'Docs'),
+      //                 'type'   => array('click', 'class', '/react/docs/why-react.html'),
+      //                 'target' => array('click', 'class', '/react/docs/working-with-the-browser.html')
+      // );
+      //
+      //
+      // foreach ($link as $value) {
+      //   if($value[1] == 'link') {
+      //     $driver->findElement(WebDriverBy::linkText($value[2]))->click();
+      //   }
+      //   if($value[1] == 'class') {
+      //     $driver->findElement(WebDriverBy::cssSelector("a[href*='$value[2]']"))->click();
+      //   }
+      // }
+
+      //11111111111111111
+      //$link = array('Multiple Components', 'Why React?', 'Multiple Components');
+
+
+
+      // foreach ($link as  $value) {
+      //   $driver->findElement(WebDriverBy::linkText($value))->click();
+      // }
+
+      // $driver->findElement(WebDriverBy::linkText('Multiple Components'))->click();
+      // $driver->findElement(WebDriverBy::linkText('Why React?'))->click();
+      // $driver->findElement(WebDriverBy::linkText('Multiple Components'))->click();
+
+
     //  return back()->withInput();
     }
 
-    public function chkUrl($url)
-    {
+    public function chkUrl($url)  {
       $headers = @get_headers($url);
-      if(strpos($headers[0],'200')===false)return false;
+      if(strpos($headers[0],'200')===false) return false;
       return true;
     }
+
+
 }
