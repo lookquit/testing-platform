@@ -68,25 +68,32 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading style-tx">History</div>
-
+            @foreach( $db as $put => $name )
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
+                    <div class="panel-heading" role="tab" id="heading{{$put+1}}">
                         <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      TEST CASE #
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$put+1}}" aria-expanded="true" aria-controls="collapse{{$put+1}}">
+                      TEST CASE #{{$put+1}} {{$name[0]->name_testcase}}
                     </a>
                   </h4>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="collapse{{$put+1}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$put+1}}">
                         <div class="panel-body">
-                            Situation admitting promotion at or to perceived be. Mr acuteness we as estimable enjoyment up. An held late as felt know. Learn do allow solid to grave. Middleton suspicion age her attention. Chiefly several bed its wishing. Is so moments on chamber
-                            pressed to. Doubtful yet way properly answered humanity its desirous. Minuter believe service arrived civilly add all. Acuteness allowance an at eagerness favourite in extensive exquisite ye.
+                          @foreach( $name as $key => $value )
+                            @if($value->err == 'Successful')
+                              <li class="success"><span class="glyphicon glyphicon-ok"></span> Successful: {{$value->command}} {{$value->target}}</li><br>
+                            @endif
+                            @if($value->err == 'Failed')
+                              <li class="fail"><span class="glyphicon glyphicon-remove"></span>Failed: {{$value->command}} {{$value->target}}</li><br>
+                            @endif
+
+                          @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-
+            @endforeach
         </div>
     </div>
 </div>

@@ -50,4 +50,15 @@ td {
   display: none;
 }
 
+.success {
+  list-style-type: none;
+  /*font-weight: normal;*/
+  color: green;
+}
+
+.fail {
+  list-style-type: none;
+  /*font-weight: normal;*/
+  color: red;
+}
 /*# sourceMappingURL=main.css.map */

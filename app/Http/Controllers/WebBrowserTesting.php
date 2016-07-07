@@ -21,18 +21,22 @@ class WebBrowserTesting extends Controller
         $hold;
 
         foreach ($name_db as $value) {
-          $hold['name'][] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
+          $hold[] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
                                            ->get();
         }
 
-      //  echo '<pre>';
-        var_dump($hold);
-        //
-        // $result = []['sanook'] = [
-        //
-        // ];
 
-      return view('testing_platform', ['db' => $name_db]);
+      // foreach ($hold as $put => $name) {
+      //   echo ($put+1)." ";
+      //   echo $name[0]->name_testcase."<br>";
+      //   foreach ($name as $key => $value) {
+      //     echo $value->target."<br>";
+      //   }
+      // }
+      //  var_dump($hold);
+
+
+      return view('testing_platform', ['db' => $hold]);
 
     }
 
@@ -121,8 +125,8 @@ class WebBrowserTesting extends Controller
 
           if($chkElement == false || $chkElement == false) {
             $log = 'Failed<br>';
-            if($chkElement == false) $log .= '-Failed find element.<br>';
-            if($chkAction == false) $log .= '-Failed Action.<br>';
+            if($chkElement == false) $log .= 'Failed';
+            if($chkAction == false) $log .= 'Failed';
           } else {
             $result = true;
             $log = 'Successful';
@@ -136,7 +140,7 @@ class WebBrowserTesting extends Controller
         $driver->quit();
       } else {
         $result = fasle;
-        $log = 'Failed<br>-Failed URL';
+        $log = 'Failed';
 
         DB::table('testcases')->insert(
           ['name_test_testcase' => $name, 'url' => $url, 'command' => $action, 'target' => $target, 'value' => $value, 'result' => $result, 'err' => $log]
