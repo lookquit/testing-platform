@@ -13,9 +13,27 @@ class WebBrowserTesting extends Controller
 {
     private $driver;
     private $host = 'http://localhost:4444/wd/hub';
-    public function index() {
-      return view('testing_platform', ['db' => DB::table('testcases')]);
-      //return view('testing_platform')->with('db', ['data' => 'test']);
+    public function index()
+    {
+        $name_db = \DB::table('testcases')->select('name_testcase')
+                            ->groupBy('name_testcase')
+                            ->get();
+        $hold;
+
+        foreach ($name_db as $value) {
+          $hold['name'][] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
+                                           ->get();
+        }
+
+      //  echo '<pre>';
+        var_dump($hold);
+        //
+        // $result = []['sanook'] = [
+        //
+        // ];
+
+      return view('testing_platform', ['db' => $name_db]);
+
     }
 
     public function callSelenium(Request $req) {

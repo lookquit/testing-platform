@@ -1,10 +1,6 @@
 @extends('layout') @section('content')
-<pre>
-{{
-
-
-  var_dump($db->get())
-}}
+<!-- <pre>
+  {{var_dump($db)}} -->
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default clearfix ">
@@ -72,12 +68,13 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading style-tx">History</div>
+
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      TEST CASE #3 Login
+                      TEST CASE #
                     </a>
                   </h4>
                     </div>
@@ -89,6 +86,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
