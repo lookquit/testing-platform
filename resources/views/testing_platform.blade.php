@@ -1,4 +1,10 @@
 @extends('layout') @section('content')
+<pre>
+{{
+
+
+  var_dump($db->get())
+}}
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default clearfix ">
@@ -19,7 +25,7 @@
                     <table class="table head-table text-center">
                         <tr>
                             <td>Test Steps</td>
-                            <td>Command</td>
+                            <td>action</td>
                             <td>Target</td>
                             <td>Value</td>
                             <td></td>
@@ -30,9 +36,9 @@
                                 <td>
                                   <select name="command[]" class="form-control">
                                     <option value="click">Click</option>
-                                    <option value="sendKeys">SendKeys</option>
-                                    <option value="clear">ClearKeys</option>
-
+                                    <option value="sendkey">SendKeys</option>
+                                    <option value="submit">Submit</option>
+                                    <option value="verify">Verify</option>
                                   </select>
                                 </td>
                                 <td>
@@ -40,7 +46,7 @@
                                       <option value="id">Id</option>
                                       <option value="class">Class</option>
                                       <option value="name">Name</option>
-                                      <option value="linktext">LinkText</option>
+                                      <option value="text">Text</option>
                                     </select>
                                     <input type="text" name="target[]" value="" placeholder="Target" class="form-control">
                                 </td>
@@ -82,38 +88,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      TEST CASE #2 Register
-                    </a>
-                  </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                            beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                        <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      TEST CASE #1 View
-                    </a>
-                  </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                            on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                            beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -127,14 +101,9 @@
         var newdiv = document.createElement('tr');
         newdiv.innerHTML =
             '<td>' + (count + 1) + '</td>' +
-            '<td>'+'<select name="command[]" class="form-control">'+
-            '<option value="click">Click</option>'+
-            '<option value="sendKeys">SendKeys</option>'+
-            '<option value="clear">ClearKeys</option>'+
-            '</select></td>' +
-            '<td><select name="type[]" class="form-control"><option value="id">Id</option><option value="class">Class</option><option value="name">Name</option><option value="linktext">LinkText</option></select>'+
-            '<input type="text" name="target[]" value="" placeholder="Target" class="form-control"></td>' +
-            '<td><input type="text" name="value[]" value="" placeholder="Value" class="form-control"></td>' +
+            '<td><select name="command[]" class="form-control"><option value="click">Click</option><option value="sendkey">SendKeys</option><option value="submit">Submit</option><option value="verify">Verify</option></select></td>'+
+            '<td><select name="type[]" class="form-control"><option value="id">Id</option><option value="class">Class</option><option value="name">Name</option><option value="text">Text</option></select><input type="text" name="target[]" value="" placeholder="Target" class="form-control"></td>' +
+            '<td><input type="text" name="value[]" value="" placeholder="Value" class="form-control"></td>'+
             '<td><button class="btn btn-default" id="show" type="button" onClick="addInput(\'form-dynamic\');">+</button></td>';
         document.getElementById("submit").value = count+1;
         document.getElementById(form).appendChild(newdiv);
