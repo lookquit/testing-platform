@@ -150,12 +150,12 @@ class WebBrowserTesting extends Controller
       return back();
     }
     public function demo() {
-      $capabilities = DesiredCapabilities::chrome();
-      $driver = RemoteWebDriver::create('http://localhost:9515', $capabilities);
-      $driver->get('http://www.sanook.com/');
-      $driver->findElement(WebDriverBy::id('pager-5'))->click();
-      $driver->findElement(WebDriverBy::id('pager-1'))->click();
-      $driver->findElement(WebDriverBy::id('pager-3'))->click();
+      $capabilities = DesiredCapabilities::internetexplorer();
+      $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities, 500);
+      $driver->get('https://www.blognone.com/');
+      $driver->findElement(WebDriverBy::linkText("รีวิว Pokemon Go ออกเดินทางไปจับโปเกมอนกันเถอะ!"))->click();
+      //$driver->quit();
+
       echo '<h1>HA HA HA HA</h1>';
     }
     public function chkUrl($url)  {
