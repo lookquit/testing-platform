@@ -8,6 +8,10 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverExpectedCondition;
+use Illuminate\Support\Facades\Redirect;
+
+use Facebook\WebDriver\Remote\WebDriverBrowserType;
+use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 
 class WebBrowserTesting extends Controller
 {
@@ -24,8 +28,6 @@ class WebBrowserTesting extends Controller
           $hold[] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
                                            ->get();
         }
-
-
       // foreach ($hold as $put => $name) {
       //   echo ($put+1)." ";
       //   echo $name[0]->name_testcase."<br>";
@@ -35,10 +37,11 @@ class WebBrowserTesting extends Controller
       // }
       //  var_dump($hold);
 
-
       return view('testing_platform', ['db' => $hold]);
 
     }
+
+
 
     public function callSelenium(Request $req) {
       $url = $req->input('url');
@@ -155,4 +158,16 @@ class WebBrowserTesting extends Controller
       if(strpos($headers[0],'200')===false) return false;
       return true;
     }
+
+
+    public function demo() {
+      $capabilities = DesiredCapabilities::InternetExplorerDriver();
+      $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
+      $driver->get('http://www.sanook.com/');
+      $driver->findElement(WebDriverBy::id('pager-5'))->click();
+      $driver->findElement(WebDriverBy::id('pager-1'))->click();
+      $driver->findElement(WebDriverBy::id('pager-3'))->click();
+      echo '<h1>HA HA HA HA</h1>';
+    }
+
 }
