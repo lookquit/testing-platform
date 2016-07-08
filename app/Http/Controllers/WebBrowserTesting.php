@@ -151,7 +151,7 @@ class WebBrowserTesting extends Controller
     }
     public function demo() {
       $capabilities = DesiredCapabilities::chrome();
-      $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
+      $driver = RemoteWebDriver::create('http://localhost:9515', $capabilities);
       $driver->get('http://www.sanook.com/');
       $driver->findElement(WebDriverBy::id('pager-5'))->click();
       $driver->findElement(WebDriverBy::id('pager-1'))->click();
