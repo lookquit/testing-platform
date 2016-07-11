@@ -11,156 +11,157 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 
 class WebBrowserTesting extends Controller
 {
-    private $driver;
-    private $host = 'http://localhost:4444/wd/hub';
-    public function index()
-    {
-        $name_db = \DB::table('testcases')->select('name_testcase')
-                            ->groupBy('name_testcase')
-                            ->get();
-        $hold;
+  private $driver;
+  private $host = 'http://localhost:4444/wd/hub';
 
-        foreach ($name_db as $value) {
-          $hold[] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
-                                           ->get();
+  public function index()
+  {
+    $hold;
+    $name_db = \DB::table('testcases')->select('name_testcase')
+                ->groupBy('name_testcase')
+                ->get();
+    foreach ($name_db as $value)
+    {
+      $hold[] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
+                                       ->get();
+    }
+    return view('testing_platform', ['db' => $hold]);
+  }
+
+  public function chkUrl($url)
+  {
+    $headers = @get_headers($url);
+    if(strpos($headers[0],'200')===false) return false;
+    return true;
+  }
+
+  public function callSelenium(Request $req)
+  {
+    $url = $req->input('url');
+    $name = $req->input('name');
+    $action = $req->input('command');
+    $type = $req->input('type');
+    $target = $req->input('target');
+    $value = $req->input('value');
+    $count = $req->input('count');
+
+    $result = 0;
+
+    if($this->chkUrl($url))
+    {
+      $capabilities = DesiredCapabilities::firefox();
+      $driver = RemoteWebDriver::create($this->host, $capabilities);
+      $driver->get($url);
+      $result++;
+
+      for ($i=0; $i<$count ; $i++)
+      {
+        $result = 1;
+        $element = '';
+        switch ($type[$i]) {
+
+          case 'id':
+              if($driver->findElements(WebDriverBy::id($target[$i]))) {
+                $element = $driver->findElement(WebDriverBy::id($target[$i]));
+                $result++;
+              }
+          break;
+
+          case 'class':
+              if($driver->findElements(WebDriverBy::className($target[$i]))) {
+                $element = $driver->findElement(WebDriverBy::className($target[$i]));
+                $result++;
+              }
+          break;
+
+          case 'name':
+              if($driver->findElements(WebDriverBy::name($target[$i]))) {
+                $element = $driver->findElement(WebDriverBy::name($target[$i]));
+                $result++;
+              }
+          break;
+
+          case 'text':
+              if($driver->findElements(WebDriverBy::linkText($target[$i]))) {
+                $element = $driver->findElement(WebDriverBy::linkText($target[$i]));
+                $result++;
+              }
+          break;
+
+          default:
+
+          break;
+
         }
 
+        if($result == 2) {
 
-      // foreach ($hold as $put => $name) {
-      //   echo ($put+1)." ";
-      //   echo $name[0]->name_testcase."<br>";
-      //   foreach ($name as $key => $value) {
-      //     echo $value->target."<br>";
-      //   }
-      // }
-      //  var_dump($hold);
-
-
-      return view('testing_platform', ['db' => $hold]);
-
-    }
-
-    public function callSelenium(Request $req) {
-      $url = $req->input('url');
-      $name = $req->input('name');
-      $action = $req->input('command');
-      $type = $req->input('type');
-      $target = $req->input('target');
-      $value = $req->input('value');
-      $count = $req->input('count');
-
-      if($this->chkUrl($url)) {
-        $capabilities = DesiredCapabilities::firefox();
-        $driver = RemoteWebDriver::create($this->host, $capabilities, 500);
-        $driver->get($url);
-        $iteration = 0;
-
-        for ($i=0; $i<$count ; $i++) {
-          $chkAction = false;
-          $chkElement = false;
-          $result = false;
-          $log = '';
-          $element = '';
-
-          switch ($type[$i]) {
-
-            case 'id':
-                if($driver->findElements(WebDriverBy::id($target[$i]))) {
-                  $element = $driver->findElement(WebDriverBy::id($target[$i]));
-                  $chkElement = true;
-                }
+          switch ($action[$i]) {
+            case 'click':
+              $element->click();
+              $result++;
             break;
 
-            case 'class':
-                if($driver->findElements(WebDriverBy::className($target[$i]))) {
-                  $element = $driver->findElement(WebDriverBy::className($target[$i]));
-                  $chkElement = true;
-                }
+            case 'sendkey':
+              $element->sendKeys($value[$i]);
+              $result++;
             break;
 
-            case 'name':
-                if($driver->findElements(WebDriverBy::name($target[$i]))) {
-                  $element = $driver->findElement(WebDriverBy::name($target[$i]));
-                  $chkElement = true;
-                }
-            break;
-
-            case 'text':
-                if($driver->findElements(WebDriverBy::linkText($target[$i]))) {
-                  $element = $driver->findElement(WebDriverBy::linkText($target[$i]));
-                  $chkElement = true;
-                }
+            case 'submit':
+              $element->submit();
+              $result++;
             break;
 
             default:
-              $chkElement = false;
+
             break;
-
           }
-
-          if($chkElement == true) {
-
-            switch ($action[$i]) {
-              case 'click':
-                $element->click();
-                $chkAction = true;
-              break;
-
-              case 'sendkey':
-                $element->sendKeys($value[$i]);
-                $chkAction = true;
-              break;
-
-              case 'submit':
-                $element->submit();
-                $chkAction = true;
-              break;
-
-              default:
-                $chkAction = false;
-              break;
-            }
-
-          }
-
-          if($chkElement == false || $chkElement == false) {
-            $log = 'Failed<br>';
-            if($chkElement == false) $log .= 'Failed';
-            if($chkAction == false) $log .= 'Failed';
-          } else {
-            $result = true;
-            $log = 'Successful';
-          }
-
-          DB::table('testcases')->insert(
-            ['name_testcase' => $name, 'url' => $url, 'command' => $action[$i], 'target' => $target[$i], 'value' => $value[$i], 'result' => $result, 'err' => $log]
-          );
 
         }
-        $driver->quit();
-      } else {
-        $result = fasle;
-        $log = 'Failed';
 
         DB::table('testcases')->insert(
-          ['name_test_testcase' => $name, 'url' => $url, 'command' => $action, 'target' => $target, 'value' => $value, 'result' => $result, 'err' => $log]
+          ['name_testcase' => $name, 'url' => $url, 'command' => $action[$i], 'target' => $target[$i], 'value' => $value[$i], 'result' => $result, 'err' => '']
         );
+
       }
 
-      return back();
-    }
-    public function demo() {
-      $capabilities = DesiredCapabilities::internetexplorer();
-      $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities, 500);
-      $driver->get('https://www.blognone.com/');
-      $driver->findElement(WebDriverBy::linkText("รีวิว Pokemon Go ออกเดินทางไปจับโปเกมอนกันเถอะ!"))->click();
-      //$driver->quit();
+      $driver->quit();
 
-      echo '<h1>HA HA HA HA</h1>';
+    } else {
+      DB::table('testcases')->insert(
+        ['name_test_testcase' => $name, 'url' => $url, 'command' => $action[0], 'target' => $target, 'value' => $value, 'result' => $result, 'err' => '']
+      );
+
     }
-    public function chkUrl($url)  {
-      $headers = @get_headers($url);
-      if(strpos($headers[0],'200')===false) return false;
-      return true;
-    }
+    return back();
+  }
+
+  public function test()
+  {
+
+  }
+
+  public function page1()
+  {
+    // $capabilities = DesiredCapabilities::internetexplorer();
+    // $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities, 500);
+    // $driver->get('https://www.blognone.com/');
+    // $driver->findElement(WebDriverBy::linkText("รีวิว Pokemon Go ออกเดินทางไปจับโปเกมอนกันเถอะ!"))->click();
+    // //$driver->quit();
+    // echo '<h1>HA HA HA HA</h1>';
+    return view('test');
+  }
+
+  public function page2()
+  {
+    echo 'h1';
+  }
+
+  public function page3()
+  {
+    echo 'a tag';
+  }
+
+
+
 }

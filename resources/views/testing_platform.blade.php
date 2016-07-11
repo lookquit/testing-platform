@@ -81,13 +81,18 @@
                     <div id="collapse{{$put+1}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$put+1}}">
                         <div class="panel-body">
                           @foreach( $name as $key => $value )
-                            @if($value->err == 'Successful')
-                              <li class="success"><span class="glyphicon glyphicon-ok"></span> Successful: {{$value->command}} {{$value->target}}</li><br>
+                            @if($value->result == 0)
+                              <li class="fail"><span class="glyphicon glyphicon-remove"></span> Failed: Not Found URL</li><br>
                             @endif
-                            @if($value->err == 'Failed')
-                              <li class="fail"><span class="glyphicon glyphicon-remove"></span>Failed: {{$value->command}} {{$value->target}}</li><br>
+                            @if($value->result == 1)
+                              <li class="fail"><span class="glyphicon glyphicon-remove"></span> Failed: {{$value->target}} : Not Found Element</li><br>
                             @endif
-
+                            @if($value->result == 2)
+                              <li class="fail"><span class="glyphicon glyphicon-remove"></span>Failed: {{$value->command}} {{$value->target}} : Cannot Command</li><br>
+                            @endif
+                            @if($value->result == 3)
+                              <li class="success"><span class="glyphicon glyphicon-ok"></span>Success: {{$value->command}} {{$value->target}}</li><br>
+                            @endif
                           @endforeach
                         </div>
                     </div>

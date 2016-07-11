@@ -10,7 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('demo', 'WebBrowserTesting@demo')->name('test');
+Route::get('page1', 'WebBrowserTesting@page1');
+Route::get('page2', 'WebBrowserTesting@page2');
+Route::get('page3', 'WebBrowserTesting@page3');
+
+Route:: get('test', 'WebBrowserTesting@test');
+
 Route::get('/', 'WebBrowserTesting@index')->name('index');
 
 Route::post('testing', 'WebBrowserTesting@callSelenium')->name('test');
