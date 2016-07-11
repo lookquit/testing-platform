@@ -11,16 +11,42 @@ body {
     font-weight: bold;
     text-align: center;
     margin: 20px 0;
+    color: #3482ff;
 }
 .head-table {
     margin: 40px 0;
 }
+
+.panel-heading {
+  margin: 0px -1px 0px -1px;
+  border-bottom: 1px solid #d8d8d8 !important;
+  background-color: #fff !important;
+}
+
 .content {
     margin-top: 50px;
 }
 .style-tx {
     font-size: 20px;
+    color: #fff !important;
+    background-color: #3482ff !important;
 }
+
+.nav-cus{
+  border-color: #3482ff;
+  border-width: 0 0 1px 0;
+  background-color: white;
+}
+
+.panel-group {
+  margin-bottom: 0px;
+}
+
+.panel-default {
+  border-color: #fff;
+  box-shadow: 0px 1px 0px 1px rgba(230,230,230,1);
+}
+
 .form-cl {
     padding: 25px
 }

@@ -1,6 +1,5 @@
 @extends('layout') @section('content')
-<!-- <pre>
-  {{var_dump($db)}} -->
+
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default clearfix ">
@@ -78,7 +77,7 @@
                     </a>
                   </h4>
                     </div>
-                    <div id="collapse{{$put+1}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$put+1}}">
+                    <div id="collapse{{$put+1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$put+1}}">
                         <div class="panel-body">
                           @foreach( $name as $key => $value )
                             @if($value->result == 0)

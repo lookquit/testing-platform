@@ -14,7 +14,7 @@
 
 <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default nav-cus">
         <h1 class="head-tx">Web Browser Testing</h1>
     </nav>
 
