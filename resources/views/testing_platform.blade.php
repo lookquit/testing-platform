@@ -6,17 +6,17 @@
         <div class="panel panel-default clearfix ">
             <div class="panel-heading style-tx">Testing</div>
 
-            <a href="/firefox" class="link-del">
-              <i class="fa fa-firefox fa-5x parent {{ $ff }}"  atl="Firefox" title="Firefox">
+            <a href="/firefox" class="link-del parent">
+                 <img src="img/ff.png" class="browser-{{ $ff }}" alt="firefox" />
                 @if( $ff )
                 <i class="fa fa-check  check-cus">
 
                 </i>
+
                 @endif
-              </i>
             </a>
-            <a href="/chrome" class="link-del">
-              <i class="fa fa-chrome fa-5x parent {{ $chrome }}" atl="Chrome" title="Chrome">
+            <a href="/chrome" class="link-del parent">
+              <img src="img/chrome.png" class="browser-{{ $chrome }}" alt="chrome" />
                 @if( $chrome )
                 <i class="fa fa-check  check-cus">
 
@@ -24,8 +24,8 @@
                 @endif
               </i>
             </a>
-            <a href="/ie" class="link-del">
-              <i class="fa fa-internet-explorer fa-5x parent {{ $ie }}" atl="Internet Explorer" title="Internet Explorer">
+            <a href="/ie" class="link-del parent">
+              <img src="img/ie.png" class="browser-{{ $ie }}" alt="Internet Explorer" />
                 @if(  $ie  )
                 <i class="fa fa-check  check-cus">
 

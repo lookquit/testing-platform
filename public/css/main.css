@@ -145,12 +145,13 @@ label {
 
 .check-cus {
   position: absolute;
-  right: 1px;
-  bottom: -2px;
   color: #31c731;
   font-size: 45px !important;
+  left: 45px;
+  top: -9px;
 }
 /*# sourceMappingURL=main.css.map */
+
 
 
 .title{
@@ -176,4 +177,16 @@ label {
 }
 .link-del:hover {
   text-decoration: none;
+}
+
+.browser- {
+  opacity: 0.2;
+}
+
+.browser-active {
+  opacity: 1;
+}
+
+img.browser-:hover {
+    opacity: 0.4;
 }

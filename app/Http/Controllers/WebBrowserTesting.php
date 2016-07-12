@@ -21,13 +21,13 @@ class WebBrowserTesting extends Controller
     $ie = "";
     $chrome = "";
     if($browser == "firefox") {
-      $ff = "icon-ff";
+      $ff = "active";
     }
     if($browser == "ie") {
-      $ie = "icon-ie";
+      $ie = "active";
     }
     if($browser == "chrome") {
-      $chrome = "icon-chrome";
+      $chrome = "active";
     }
 
     $hold;
