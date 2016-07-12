@@ -14,8 +14,21 @@ class WebBrowserTesting extends Controller
   private $driver;
   private $host = 'http://localhost:4444/wd/hub';
 
-  public function index()
+  public function index($browser = "firefox")
   {
+    $ff = "";
+    $ie = "";
+    $chrome = "";
+    if($browser == "firefox") {
+      $ff = "icon-ff";
+    }
+    if($browser == "ie") {
+      $ie = "icon-ie";
+    }
+    if($browser == "chrome") {
+      $chrome = "icon-chrome";
+    }
+
     $hold;
     $name_db = \DB::table('testcases')->select('name_testcase')
                 ->groupBy('name_testcase')
@@ -25,7 +38,7 @@ class WebBrowserTesting extends Controller
       $hold[] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
                                        ->get();
     }
-    return view('testing_platform', ['db' => $hold]);
+    return view('testing_platform', ['db' => $hold, 'ff' => $ff, 'ie' => $ie, 'chrome' => $chrome, 'browser' => $browser]);
   }
 
   public function chkUrl($url)

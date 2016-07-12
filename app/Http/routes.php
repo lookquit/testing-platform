@@ -16,7 +16,7 @@ Route::get('page3', 'WebBrowserTesting@page3');
 
 Route:: get('test', 'WebBrowserTesting@test');
 
-Route::get('/', 'WebBrowserTesting@index')->name('index');
+Route::get('/{browser?}', 'WebBrowserTesting@index')->name('index');
 
 Route::post('testing', 'WebBrowserTesting@callSelenium')->name('test');
 

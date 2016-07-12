@@ -1,9 +1,12 @@
 @extends('layout') @section('content')
-
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default clearfix ">
             <div class="panel-heading style-tx">Testing</div>
+            <a href="/firefox"><i class="fa fa-firefox fa-5x {{ $ff }}" aria-hidden="true" ></i></a>
+            <a href="/chrome"><i class="fa fa-chrome fa-5x {{ $chrome }}" aria-hidden="true"></i></a>
+            <a href="/ie"><i class="fa fa-internet-explorer fa-5x {{ $ie }}" aria-hidden="true"></i></a>
+
             <form method="POST" action="{{ route('test') }}" class="form-horizontal" role="form">
                 <div class="form-cl">
 
@@ -20,7 +23,8 @@
                     <table class="table head-table text-center">
                         <tr>
                             <td>Test Steps</td>
-                            <td>action</td>
+                            <td>Action</td>
+                            <td>Type</td>
                             <td>Target</td>
                             <td>Value</td>
                             <td></td>
@@ -37,13 +41,18 @@
                                   </select>
                                 </td>
                                 <td>
-                                    <select name="type[]" class="form-control">
+
+                                    <select name="type[]" class="form-control col-sm-6">
                                       <option value="id">Id</option>
                                       <option value="class">Class</option>
                                       <option value="name">Name</option>
                                       <option value="text">Text</option>
                                     </select>
-                                    <input type="text" name="target[]" value="" placeholder="Target" class="form-control">
+
+
+                                </td>
+                                <td>
+                                          <input type="text" name="target[]" value="" placeholder="Target" class="form-control col-sm-6">
                                 </td>
                                 <td>
                                     <input type="text" name="value[]" value="" placeholder="Value" class="form-control">
@@ -58,6 +67,7 @@
 
                     <button class="btn btn-lg btn-success pull-right bth-style" id="submit" type="submit" name="count" value="1">Run</button>
                     {{ csrf_field() }}
+                    <input type="hidden" name="browser" value="{{ $browser }}">
             </form>
 
             </div>
@@ -111,7 +121,7 @@
         newdiv.innerHTML =
             '<td>' + (count + 1) + '</td>' +
             '<td><select name="command[]" class="form-control"><option value="click">Click</option><option value="sendkey">SendKeys</option><option value="submit">Submit</option><option value="verify">Verify</option></select></td>'+
-            '<td><select name="type[]" class="form-control"><option value="id">Id</option><option value="class">Class</option><option value="name">Name</option><option value="text">Text</option></select><input type="text" name="target[]" value="" placeholder="Target" class="form-control"></td>' +
+            '<td><select name="type[]" class="form-control"><option value="id">Id</option><option value="class">Class</option><option value="name">Name</option><option value="text">Text</option></select></td><td><input type="text" name="target[]" value="" placeholder="Target" class="form-control"></td>' +
             '<td><input type="text" name="value[]" value="" placeholder="Value" class="form-control"></td>'+
             '<td><button class="btn btn-default" id="show" type="button" onClick="addInput(\'form-dynamic\');">+</button></td>';
         document.getElementById("submit").value = count+1;

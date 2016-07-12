@@ -30,6 +30,7 @@ body {
     font-size: 20px;
     color: #fff !important;
     background-color: #3482ff !important;
+        margin-bottom: 14px;
 }
 
 .nav-cus{
@@ -68,8 +69,22 @@ td {
     text-decoration: none;
 }
 
+.icon-ff {
+      color: #e16724;
+}
+
+.icon-chrome {
+      color: #1a3d56;
+}
+.icon-ie {
+  color: #1ebbee;
+}
 .panel-title>a:focus {
     text-decoration: none;
+}
+
+.form-cus {
+      width: 70%;
 }
 
 #none {
