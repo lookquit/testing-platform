@@ -1,18 +1,38 @@
 @extends('layout') @section('content')
+
+
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default clearfix ">
             <div class="panel-heading style-tx">Testing</div>
 
-            <a href="/firefox">
-              <i class="fa fa-firefox fa-5x ff-add {{ $ff }}"  atl="Firefox" title="Firefox">
+            <a href="/firefox" class="link-del">
+              <i class="fa fa-firefox fa-5x parent {{ $ff }}"  atl="Firefox" title="Firefox">
+                @if( $ff )
                 <i class="fa fa-check  check-cus">
 
                 </i>
+                @endif
               </i>
             </a>
-            <a href="/chrome"><i class="fa fa-chrome fa-5x {{ $chrome }}" atl="Chrome" title="Chrome"></i><i class="fa fa-check fa-5x check-cus"></i></a>
-            <a href="/ie"><i class="fa fa-internet-explorer fa-5x {{ $ie }}" atl="Internet Explorer" title="Internet Explorer"></i></a><i class="fa fa-check fa-5x check-cus"></i>
+            <a href="/chrome" class="link-del">
+              <i class="fa fa-chrome fa-5x parent {{ $chrome }}" atl="Chrome" title="Chrome">
+                @if( $chrome )
+                <i class="fa fa-check  check-cus">
+
+                </i>
+                @endif
+              </i>
+            </a>
+            <a href="/ie" class="link-del">
+              <i class="fa fa-internet-explorer fa-5x parent {{ $ie }}" atl="Internet Explorer" title="Internet Explorer">
+                @if(  $ie  )
+                <i class="fa fa-check  check-cus">
+
+                </i>
+                @endif
+              </i>
+            </a>
 
             <form method="POST" action="{{ route('test') }}" class="form-horizontal" role="form">
                 <div class="form-cl">
@@ -85,17 +105,22 @@
         <div class="panel panel-default">
             <div class="panel-heading style-tx-his">History</div>
             @foreach( $db as $put => $name )
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="heading{{$put+1}}">
-                        <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$put+1}}" aria-expanded="true" aria-controls="collapse{{$put+1}}">
-                      TestCase{{$put+1}}: {{$name[0]->name_testcase}}
-                    </a>
-                  </h4>
+            <div class="list-item" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="item">
+                    <div class="title" role="tab" id="heading{{$put+1}}">
+
+                          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$put+1}}" aria-expanded="true" aria-controls="collapse{{$put+1}}" class="tx-list">
+                            TestCase{{$put+1}}: {{$name[0]->name_testcase}}
+                          </a>
+
                     </div>
-                    <div id="collapse{{$put+1}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$put+1}}">
-                        <div class="panel-body">
+                    @if ($name == end($db))
+                      <div id="collapse{{$put+1}}" class="panel-collapse collapse list-status collapse in" role="tabpanel" aria-labelledby="heading{{$put+1}}">
+                    @else
+                      <div id="collapse{{$put+1}}" class="panel-collapse collapse list-status" role="tabpanel" aria-labelledby="heading{{$put+1}}">
+                    @endif
+
+                        <div class="line-tx">
                           @foreach( $name as $key => $value )
                             @if($value->result == 0)
                               <li class="fail"><span class="glyphicon glyphicon-remove icon-space"></span> Failed: Not Found URL</li><br>
@@ -107,7 +132,7 @@
                               <li class="fail"><span class="glyphicon glyphicon-remove icon-space"></span>Failed: {{$value->command}} {{$value->target}} : Cannot Command</li><br>
                             @endif
                             @if($value->result == 3)
-                              <li class="success"><span class="glyphicon glyphicon-ok icon-space"></span>Success: {{$value->command}} {{$value->target}}</li><br>
+                              <li class="success"><span class="glyphicon glyphicon-ok icon-space" ></span>Success: {{$value->command}} {{$value->target}}</li><br>
                             @endif
                           @endforeach
                         </div>

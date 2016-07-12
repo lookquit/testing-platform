@@ -137,7 +137,7 @@ class WebBrowserTesting extends Controller
         }
 
         DB::table('testcases')->insert(
-          ['name_testcase' => $name, 'url' => $url, 'command' => $action[$i], 'target' => $target[$i], 'value' => $value[$i], 'result' => $result, 'err' => '']
+          ['name_testcase' => $name, 'url' => $url, 'command' => $action[$i], 'target' => $target[$i], 'value' => $value[$i], 'result' => $result, 'err' => '', 'last' => 'collapse in']
         );
 
       }
@@ -146,7 +146,7 @@ class WebBrowserTesting extends Controller
 
     } else {
       DB::table('testcases')->insert(
-        ['name_test_testcase' => $name, 'url' => $url, 'command' => $action[0], 'target' => $target, 'value' => $value, 'result' => $result, 'err' => '']
+        ['name_test_testcase' => $name, 'url' => $url, 'command' => $action[0], 'target' => $target, 'value' => $value, 'result' => $result, 'err' => '', 'last' => 'collapse in']
       );
 
     }
