@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
@@ -105,6 +106,13 @@ class WebBrowserTesting extends Controller
               }
           break;
 
+          case 'css':
+              if($driver->findElements(WebDriverBy::cssSelector($target[$i]))) {
+                $element = $driver->findElement(WebDriverBy::cssSelector($target[$i]));
+                $result++;
+              }
+          break;
+
           default:
 
           break;
@@ -137,7 +145,7 @@ class WebBrowserTesting extends Controller
         }
 
         DB::table('testcases')->insert(
-          ['name_testcase' => $name, 'url' => $url, 'command' => $action[$i], 'target' => $target[$i], 'value' => $value[$i], 'result' => $result, 'err' => '', 'last' => 'collapse in']
+          ['name_testcase' => $name, 'url' => $url, 'command' => $action[$i], 'target' => $target[$i], 'value' => $value[$i], 'result' => $result, 'err' => '']
         );
 
       }
@@ -146,7 +154,7 @@ class WebBrowserTesting extends Controller
 
     } else {
       DB::table('testcases')->insert(
-        ['name_test_testcase' => $name, 'url' => $url, 'command' => $action[0], 'target' => $target, 'value' => $value, 'result' => $result, 'err' => '', 'last' => 'collapse in']
+        ['name_test_testcase' => $name, 'url' => $url, 'command' => $action[0], 'target' => $target, 'value' => $value, 'result' => $result, 'err' => '']
       );
 
     }
