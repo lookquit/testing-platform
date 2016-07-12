@@ -57,12 +57,16 @@ class WebBrowserTesting extends Controller
     $target = $req->input('target');
     $value = $req->input('value');
     $count = $req->input('count');
+    $browser = $req->input('browser');
 
     $result = 0;
-
+    $capabilities = null;
     if($this->chkUrl($url))
     {
-      $capabilities = DesiredCapabilities::firefox();
+      if($browser == 'firefox') $capabilities = DesiredCapabilities::firefox();
+      if($browser == 'chrome') $capabilities = DesiredCapabilities::chrome();
+      if($browser == 'ie') $capabilities = DesiredCapabilities::internetexplorer();
+      //$capabilities = DesiredCapabilities::firefox();
       $driver = RemoteWebDriver::create($this->host, $capabilities);
       $driver->get($url);
       $result++;
@@ -156,9 +160,11 @@ class WebBrowserTesting extends Controller
 
   public function page1()
   {
-    // $capabilities = DesiredCapabilities::internetexplorer();
-    // $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities, 500);
-    // $driver->get('https://www.blognone.com/');
+    $screenshot = 'C:\xampp\htdocs\testing-platform\public\img\\' . time() . ".png";
+    $capabilities = DesiredCapabilities::internetexplorer();
+    $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities, 500);
+    $driver->get('https://www.blognone.com/');
+    $driver->takeScreenshot($screenshot);
     // $driver->findElement(WebDriverBy::linkText("รีวิว Pokemon Go ออกเดินทางไปจับโปเกมอนกันเถอะ!"))->click();
     // //$driver->quit();
     // echo '<h1>HA HA HA HA</h1>';

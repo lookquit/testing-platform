@@ -1,11 +1,11 @@
 body {
     margin: 0;
-    font-weight: bold !important;
 }
 .navbar-default {
     height: 75px;
     text-align: center;
     font-family: 'Lato';
+    height: 86px;
 }
 .head-tx {
     font-weight: bold;
@@ -31,6 +31,7 @@ body {
     color: #fff !important;
     background-color: #3482ff !important;
         margin-bottom: 14px;
+        font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .nav-cus{
@@ -74,7 +75,7 @@ td {
 }
 
 .icon-chrome {
-      color: #1a3d56;
+      color: #1aa15f;
 }
 .icon-ie {
   color: #1ebbee;
@@ -101,5 +102,22 @@ td {
   list-style-type: none;
   /*font-weight: normal;*/
   color: red;
+}
+
+.icon-space {
+  margin-right: 8px;
+}
+
+.type-cus {
+  width: 120%;
+}
+
+label {
+  font-weight: 100;
+}
+
+.target-cus {
+  width: 88%;
+  margin-left: 13px;
 }
 /*# sourceMappingURL=main.css.map */

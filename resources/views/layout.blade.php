@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="css\main.css">
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="titlebar-icon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="head.ico" />
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 </head>
 
 <body>
 
     <nav class="navbar navbar-default nav-cus">
+        <!-- <img src="img/fresh-icon.png" class="fresh-icon"> -->
         <h1 class="head-tx">Web Browser Testing</h1>
     </nav>
 
