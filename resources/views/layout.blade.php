@@ -7,7 +7,6 @@
     <title>Testing Platform</title>
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <link rel="stylesheet" href="css\main.css">
-    <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="head.ico" />
@@ -17,8 +16,8 @@
 <body>
 
     <nav class="navbar navbar-default nav-cus">
-        <!-- <img src="img/fresh-icon.png" class="fresh-icon"> -->
-        <h1 class="head-tx">Web Browser Testing</h1>
+      <span class="head-tx">WEB  BROWSER  TESTING</span>
+      <img src="img/fresh-icon.png" class="fresh-icon ">
     </nav>
 
     <div class="container content">

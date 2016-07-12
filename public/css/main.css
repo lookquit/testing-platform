@@ -1,17 +1,19 @@
 body {
     margin: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
 .navbar-default {
     height: 75px;
     text-align: center;
-    font-family: 'Lato';
-    height: 86px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
 .head-tx {
     font-weight: bold;
     text-align: center;
+    font-size: 32px;
     margin: 20px 0;
-    color: #3482ff;
+    display: inline;
+    color: #154368;
 }
 .head-table {
     margin: 40px 0;
@@ -19,34 +21,56 @@ body {
 
 .panel-heading {
   margin: 0px -1px 0px -1px;
-  border-bottom: 1px solid #d8d8d8 !important;
+  border-width: 0px;
+
   background-color: #fff !important;
+  border-radius: 0;
+
 }
 
 .content {
-    margin-top: 50px;
+    margin-top: 1px;
 }
 .style-tx {
     font-size: 20px;
     color: #fff !important;
-    background-color: #3482ff !important;
-        margin-bottom: 14px;
-        font-family: 'Open Sans Condensed', sans-serif;
+    background-color: #154368 !important;
+    margin-bottom: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+
+    border-radius: 4px 4px 0px  0px;
+}
+
+.style-tx-his {
+    font-size: 20px;
+    color: #fff !important;
+    background-color: #154368 !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+
+    border-radius: 4px 4px 0px  0px;
 }
 
 .nav-cus{
-  border-color: #3482ff;
-  border-width: 0 0 1px 0;
+  border-width: 0 0 0 0;
   background-color: white;
+  margin-top: 31px;
 }
 
 .panel-group {
   margin-bottom: 0px;
 }
 
+.panel .panel-default{
+  border: 0;
+}
+
 .panel-default {
-  border-color: #fff;
-  box-shadow: 0px 1px 0px 1px rgba(230,230,230,1);
+  border-color: #dcdcdc;
+
+  border-radius: 0px !important;
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
 
 .form-cl {
@@ -106,6 +130,7 @@ td {
 
 .icon-space {
   margin-right: 8px;
+  margin-left: 3px;
 }
 
 .type-cus {
@@ -116,8 +141,30 @@ label {
   font-weight: 100;
 }
 
+.ff-add {
+  position: relative;
+  margin-left: 8px;
+}
+
+.fresh-icon {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  margin-bottom: 37px;
+}
+
 .target-cus {
   width: 88%;
   margin-left: 13px;
+}
+.panel-body {
+  border:0;
+}
+
+.check-cus {
+  position: absolute;;
+    right: 59px;
+    bottom: -15px;
+    color: #31c731;
 }
 /*# sourceMappingURL=main.css.map */

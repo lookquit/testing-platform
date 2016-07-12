@@ -3,9 +3,16 @@
     <div class="col-md-8">
         <div class="panel panel-default clearfix ">
             <div class="panel-heading style-tx">Testing</div>
-            <a href="/firefox"><i class="fa fa-firefox fa-5x {{ $ff }}" aria-hidden="true"  atl="Firefox" title="Firefox"></i></a>
-            <a href="/chrome"><i class="fa fa-chrome fa-5x {{ $chrome }}" aria-hidden="true" atl="Chrome" title="Chrome"></i></a>
-            <a href="/ie"><i class="fa fa-internet-explorer fa-5x {{ $ie }}" aria-hidden="true" atl="Internet Explorer" title="Internet Explorer"></i></a>
+
+            <a href="/firefox">
+              <i class="fa fa-firefox fa-5x ff-add {{ $ff }}"  atl="Firefox" title="Firefox">
+                <i class="fa fa-check  check-cus">
+
+                </i>
+              </i>
+            </a>
+            <a href="/chrome"><i class="fa fa-chrome fa-5x {{ $chrome }}" atl="Chrome" title="Chrome"></i><i class="fa fa-check fa-5x check-cus"></i></a>
+            <a href="/ie"><i class="fa fa-internet-explorer fa-5x {{ $ie }}" atl="Internet Explorer" title="Internet Explorer"></i></a><i class="fa fa-check fa-5x check-cus"></i>
 
             <form method="POST" action="{{ route('test') }}" class="form-horizontal" role="form">
                 <div class="form-cl">
@@ -76,7 +83,7 @@
     </div>
     <div class="col-md-4">
         <div class="panel panel-default">
-            <div class="panel-heading style-tx">History</div>
+            <div class="panel-heading style-tx-his">History</div>
             @foreach( $db as $put => $name )
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
