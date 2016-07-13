@@ -175,9 +175,13 @@ label {
   font-size: 16px;
   color: #333;
 }
-.link-del:hover {
+
+
+a.link-del.parent:hover {
   text-decoration: none;
 }
+
+
 
 .browser- {
   opacity: 0.2;
