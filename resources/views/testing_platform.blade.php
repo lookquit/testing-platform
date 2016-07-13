@@ -154,7 +154,7 @@
         newdiv.innerHTML =
             '<td>' + (count + 1) + '</td>' +
             '<td><select name="command[]" class="form-control"><option value="click">Click</option><option value="sendkey">SendKeys</option><option value="submit">Submit</option><option value="verify">Verify</option></select></td>'+
-            '<td><select name="type[]" class="form-control type-cus"><option value="id">Id</option><option value="class">Class</option><option value="name">Name</option><option value="text">Text</option></select><option value="css">CssSelector</option></td><td><input type="text" name="target[]" value="" placeholder="Target" class="form-control target-cus"></td>' +
+            '<td><select name="type[]" class="form-control type-cus"><option value="id">Id</option><option value="class">Class</option><option value="name">Name</option><option value="text">Text</option><option value="css">CssSelector</option></select></td><td><input type="text" name="target[]" value="" placeholder="Target" class="form-control target-cus"></td>' +
             '<td><input type="text" name="value[]" value="" placeholder="Value" class="form-control"></td>'+
             '<td><button class="btn btn-default" id="show" type="button" onClick="addInput(\'form-dynamic\');">+</button></td>';
         document.getElementById("submit").value = count+1;
