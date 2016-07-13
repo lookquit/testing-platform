@@ -32,6 +32,7 @@ class WebBrowserTesting extends Controller
 
     $hold;
     $name_db = \DB::table('testcases')->select('name_testcase')
+                ->orderBy('id', 'asc')
                 ->groupBy('name_testcase')
                 ->get();
     foreach ($name_db as $value)
@@ -39,6 +40,7 @@ class WebBrowserTesting extends Controller
       $hold[] = \DB::table('testcases')->where('name_testcase', $value->name_testcase)
                                        ->get();
     }
+
     return view('testing_platform', ['db' => $hold, 'ff' => $ff, 'ie' => $ie, 'chrome' => $chrome, 'browser' => $browser]);
   }
 
