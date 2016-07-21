@@ -4,9 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "acdfedd453b96c46b2e0694b5d0e5bfb",
-    "content-hash": "25c2f88445803684307a1e6e1042d28c",
+    "hash": "c25053f904ee706490c2e55175d4b336",
+    "content-hash": "d0a85176131edefcc773d801ac610111",
     "packages": [
+        {
+            "name": "ajimix/asana-api-php-class",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ajimix/asana-api-php-class.git",
+                "reference": "a3f968f9be5fad02cb4aa5294f55a9665cb74728"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ajimix/asana-api-php-class/zipball/a3f968f9be5fad02cb4aa5294f55a9665cb74728",
+                "reference": "a3f968f9be5fad02cb4aa5294f55a9665cb74728",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "asana.php",
+                    "asana-oauth.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License Version 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Adria Jimenez",
+                    "email": "ajimix@gmail.com",
+                    "homepage": "http://www.ajimix.net"
+                }
+            ],
+            "description": "A PHP class that acts as wrapper for Asana API. Lets make things easy! :)",
+            "homepage": "https://github.com/ajimix/asana-api-php-class",
+            "keywords": [
+                "api",
+                "asana"
+            ],
+            "time": "2016-06-24 07:34:20"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.0.0",

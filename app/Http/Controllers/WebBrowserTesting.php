@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App;
 use DB;
@@ -170,20 +171,22 @@ class WebBrowserTesting extends Controller
 
   public function page1()
   {
-    $screenshot = 'C:\xampp\htdocs\testing-platform\public\img\\' . time() . ".png";
-    $capabilities = DesiredCapabilities::internetexplorer();
-    $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities, 500);
-    $driver->get('https://www.blognone.com/');
-    $driver->takeScreenshot($screenshot);
-    // $driver->findElement(WebDriverBy::linkText("รีวิว Pokemon Go ออกเดินทางไปจับโปเกมอนกันเถอะ!"))->click();
-    // //$driver->quit();
-    // echo '<h1>HA HA HA HA</h1>';
-    return view('test');
+    // $screenshot = 'C:\xampp\htdocs\testing-platform\public\img\\' . time() . ".png";
+    // $capabilities = DesiredCapabilities::internetexplorer();
+    // $driver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities, 500);
+    // $driver->get('https://www.blognone.com/');
+    // $driver->takeScreenshot($screenshot);
+    // // $driver->findElement(WebDriverBy::linkText("รีวิว Pokemon Go ออกเดินทางไปจับโปเกมอนกันเถอะ!"))->click();
+    // // //$driver->quit();
+    // // echo '<h1>HA HA HA HA</h1>';
+    // return view('test');
   }
 
   public function page2()
   {
-    echo 'h1';
+    $asana = new Asana(array(
+    'personalAccessToken' => 'GET_IT_FROM_ASANA'
+    ));
   }
 
   public function page3()
