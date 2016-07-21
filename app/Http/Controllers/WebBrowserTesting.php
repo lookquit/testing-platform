@@ -116,6 +116,13 @@ class WebBrowserTesting extends Controller
               }
           break;
 
+          case 'xpath':
+              if($driver->findElements(WebDriverBy::xpath($target[$i]))) {
+                $element = $driver->findElement(WebDriverBy::xpath($target[$i]));
+                $result++;
+              }
+          break;
+
           default:
 
           break;
@@ -166,7 +173,6 @@ class WebBrowserTesting extends Controller
 
   public function test()
   {
-
   }
 
   public function page1()
